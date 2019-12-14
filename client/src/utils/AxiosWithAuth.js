@@ -6,7 +6,7 @@ export const AxiosWithAuth = () => {
   return Axios.create({
     headers: {
       "Content-Type": "application/json",
-      Authorization: token
+      Authorization: JSON.parse(token)
     }
   });
 };
