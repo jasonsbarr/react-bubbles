@@ -11,6 +11,7 @@ const Login = () => {
     password: ""
   });
   const [token, setToken] = useLocalStorage("token", "");
+  const history = useHistory();
   const handleInputChange = event => {
     setFormState({
       ...formState,
@@ -30,6 +31,7 @@ const Login = () => {
     Axios(options)
       .then(({ data }) => {
         setToken(data.payload);
+        history.push("/bubbles");
       })
       .catch(console.error);
   };
