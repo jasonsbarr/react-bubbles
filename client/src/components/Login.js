@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import Axios from "axios";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const Login = () => {
   // make a post request to retrieve a token from the api
@@ -7,20 +10,33 @@ const Login = () => {
     username: "",
     password: ""
   });
-  const handleLogin = event => {
-    event.preventDefault();
-  };
+  const [token, setToken] = useLocalStorage("token", "");
   const handleInputChange = event => {
     setFormState({
       ...formState,
-      [event.target.key]: event.target.value
+      [event.target.name]: event.target.value
     });
+  };
+  const handleLogin = event => {
+    event.preventDefault();
+    const options = {
+      method: "post",
+      url: "http://localhost:5000/api/login",
+      data: formState,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    Axios(options)
+      .then(({ data }) => {
+        setToken(data.payload);
+      })
+      .catch(console.error);
   };
 
   return (
     <>
       <h1>Welcome to the Bubble App!</h1>
-      <h2>Login to see the bubbles!</h2>
       <form onSubmit={handleLogin}>
         <div className="formField">
           <label htmlFor="username">Username:</label>
