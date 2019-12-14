@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 const Login = () => {
   // make a post request to retrieve a token from the api
@@ -9,11 +9,11 @@ const Login = () => {
   });
   const handleLogin = event => {
     event.preventDefault();
-  }
+  };
   const handleInputChange = event => {
     setFormState({
       ...formState,
-      [event.target.key] = event.target.value
+      [event.target.key]: event.target.value
     });
   };
 
@@ -23,9 +23,7 @@ const Login = () => {
       <h2>Login to see the bubbles!</h2>
       <form onSubmit={handleLogin}>
         <div className="formField">
-          <label htmlFor="username">
-            Username:
-          </label>
+          <label htmlFor="username">Username:</label>
           <input
             type="text"
             id="username"
@@ -36,9 +34,7 @@ const Login = () => {
           />
         </div>
         <div className="formField">
-          <label htmlFor="password">
-            Password:
-          </label>
+          <label htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
