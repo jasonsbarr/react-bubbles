@@ -29,9 +29,25 @@ In this project you will create a login page and request a token from the server
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Explain what a token is used for.
+  - A token encodes certain data about the logged-in user and is sent to the server with requests for protected API routes to authenticate the user's request
 - [ ] What steps can you take in your web apps to keep your data secure?
+  - Securely hash passwords and, if you must store financial data, store it in a PCI-compliant manner
+  - Validate/filter all user input, including indirect input like cookies, URL params, etc.
+  - Escape any output to the screen based on user input to ensure no arbitrary code is accidentally executed
+  - Some people would say don't store tokens in localStorage, although I would think that if someone is able to execute their own JavaScript in your browser due to XSS you've got way more to worry about than just your token access
+  - Train your team on how to identify and circumvent possible social engineering attacks, phishing, etc.
 - [ ] Describe how web servers work.
+  - DNS lookup navigates the treacherous waters of global DNS to find the server address on which your app lives
+  - Server receives a request from the browser and parses it
+  - If the request is well-formed, the server does an action based on the request's HTTP verb and parameters
+  - If the request is not well-formed or the server is unable to do the action for some reason, e.g. the request was for a file that's not there, the server sends back an error response
+  - Otherwise, the server sends back a success response and any applicable data
+  - Depending on the connection type, the server either persists or closes the connection
 - [ ] Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+  - Create - Post
+  - Read - Get
+  - Update - Put/Patch
+  - Delete - Delete
 
 
 ## Project Set Up
