@@ -30,6 +30,7 @@ const ColorList = ({ colors, updateColors }) => {
         id: colorToEdit.id,
         code: { hex: colorToEdit.code.hex }
       })
+      .then(setEditing(false))
       .catch(console.error);
   };
 
